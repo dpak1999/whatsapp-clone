@@ -18,6 +18,12 @@ const pusher = new Pusher({
 // middleware
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "*");
+  next();
+});
+
 // Database
 const connection_url =
   "mongodb+srv://dpak:uPNGFbWT8BPZ7tSp@cluster0.lbokn.mongodb.net/whatsapp_db?retryWrites=true&w=majority";
